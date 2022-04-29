@@ -59,26 +59,19 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // Find the view pager that will allow the user to swipe between fragments
         viewPager = findViewById(R.id.viewpager);
 
-        // Give the TabLayout the ViewPager
         TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
-        // Set gravity for tab bar
+
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
-
-        // Set the default fragment when starting the app
         onNavigationItemSelected(navigationView.getMenu().getItem(0).setChecked(true));
-
-        // Set category fragment pager adapter
         CategoryFragmentPagerAdapter pagerAdapter =
                 new CategoryFragmentPagerAdapter(this, getSupportFragmentManager());
-        // Set the pager adapter onto the view pager
         viewPager.setAdapter(pagerAdapter);
     }
 
@@ -95,10 +88,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
         if (id == R.id.nav_home) {
             viewPager.setCurrentItem(Constants.HOME);
         } else if (id == R.id.nav_world) {
@@ -125,15 +115,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    // Initialize the contents of the Activity's options menu
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the Options Menu we specified in XML
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    // This method is called whenever an item in the options menu is selected.
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {

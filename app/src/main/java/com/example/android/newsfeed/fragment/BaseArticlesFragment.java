@@ -53,31 +53,15 @@ import com.example.android.newsfeed.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The BaseArticlesFragment is a {@link Fragment} subclass that implements the LoaderManager.LoaderCallbacks
- * interface in order for Fragment to be a client that interacts with the LoaderManager. It is
- * base class that is responsible for displaying a set of articles, regardless of type.
- */
 public class BaseArticlesFragment extends Fragment
         implements LoaderManager.LoaderCallbacks<List<News>>{
-
     private static final String LOG_TAG = BaseArticlesFragment.class.getName();
-
-    /** Constant value for the news loader ID. */
     private static final int NEWS_LOADER_ID = 1;
 
-    /** Adapter for the list of news */
     private NewsAdapter mAdapter;
-
-    /** TextView that is displayed when the recycler view is empty */
     private TextView mEmptyStateTextView;
-
-    /** Loading indicator that is displayed before the first load is completed */
     private View mLoadingIndicator;
 
-    /** The {@link SwipeRefreshLayout} that detects swipe gestures and
-     * triggers callbacks in the app.
-     */
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
